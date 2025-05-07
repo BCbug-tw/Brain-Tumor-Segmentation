@@ -19,11 +19,13 @@ This project implements the **Attention U-Net** architecture to perform brain tu
 - The folders in data/lgg-mri-segmentation are named based on the medical institution and ID of each patient.
 - This project splits the dataset into three subsets: training, validation, and testing. The number of images in each subset is as show in the folloing table:
 
+
 <div align="center">
-| Training | Validation | Testing |
-| :------: | :------: | :------: |
-|   3329   |     247    |   353   |
-</div>
+
+Training&nbsp;&nbsp;&nbsp; | Validation | Testing
+:------: | :------: | :------: 
+   3329   |     247    |   353
+
 ---
 
 ## Model Architecture: Attention U-net
