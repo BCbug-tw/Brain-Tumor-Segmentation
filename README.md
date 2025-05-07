@@ -59,9 +59,11 @@ The evaluation results of the model are not ideal. By observing the predicted se
 These are explained below with real examples. In the images: the left side is the original MRI, the middle is the manually annotated tumor mask, and the right is the overlay of the model's prediction and the manual annotation. In the overlay image, Gray areas represent manual annotations, while yellow areas are the model's predictions.
 
 - The model accurately identifies regions with strong signals in the region of tumor, but struggles with tumor boundaries where signals are weaker.
-![image2](/results/overlay/TCGA_CS_5395_19981004_11_overlay.jpg "prediction example1")
+![image2](/results/overlay/TCGA_CS_5395_19990606_6_overlay.jpg "prediction example1")
+![image3](/results/overlay/TCGA_CS_5395_19981004_13_overlay.jpg "prediction example2")
 - The model tends to misidentify non-tumor regions with strong signals as tumors.
-![image3](/results/overlay/TCGA_CS_4943_20000902_13_overlay.jpg "prediction example2")
+![image4](/results/overlay/TCGA_CS_4943_19990606_13_overlay.jpg "prediction example3")
+![image5](/results/overlay/TCGA_CS_4943_20010817_14_overlay.jpg "prediction example4")
 
 ---
 
