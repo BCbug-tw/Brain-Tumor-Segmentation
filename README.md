@@ -49,7 +49,7 @@ The trained model was evaluated on the test dataset using Dice score, Precision,
 
  Dice Score | Precision | Recall 
  :------: | :------: | :------: 
-   0.7675   |   0.8639  | 0.8444 
+   0.7424   |   0.8401  | 0.8339
 
 </div>
 

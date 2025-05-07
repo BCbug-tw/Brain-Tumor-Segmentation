@@ -16,7 +16,7 @@ def train_model():
 
     train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=16, shuffle=False)
-    test_loader = DataLoader(test_dataset, batch_size=16, shuffle=False)
+    test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False)
 
     model = AttentionUNet(in_ch=1, out_ch=1).to(device)
     criterion = nn.BCEWithLogitsLoss()
