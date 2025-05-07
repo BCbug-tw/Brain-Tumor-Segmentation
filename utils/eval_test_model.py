@@ -72,6 +72,7 @@ def test_model(model, dataloader, device, output_dir="results"):
                 ax[2].axis("off")
 
                 plt.clim(0,1)
+                plt.tight_layout()
                 plt.savefig(overlay_path)
                 plt.close()
 

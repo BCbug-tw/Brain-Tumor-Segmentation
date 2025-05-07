@@ -17,10 +17,8 @@
 - 資料集來源為Mateusz Budan於kaggle所提供的[Brain MRI segmentation資料集](<https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation> "Title")。該資料為The Cancer Genome Atlas (TCGA)所收集的110位膠質瘤患者腦部影像及腫瘤標記遮罩，腦部影像使用FLAIR序列收取水平方向不同切面位置的影像，並由相關專業人員手動標記腫瘤位置，共計3929組影像，影像檔案格式皆為.tif。data/lgg-mri-segmentation中的資料夾分別以患者的醫療單位及ID命名。
 
 |                         MR image                        |                             Mask                             |
-|:--:|:--:|
-|<img src="data/train/images/TCGA_DU_5851_19950428_1.tif">|<img src="data/train/images/TCGA_DU_5851_19950428_1_mask.tif">|
-    
-
+|:--:                                                     |:--:                                                          |
+|![image00](data/train/images/TCGA_DU_5851_19950428_1.tif "MR image")|![image01](data/train/images/TCGA_DU_5851_19950428_1_mask.tif "Mask")|
 
 - 本專案將該資料集劃分為三個部分，分別是訓練資料集、驗證資料集以及測試資料集，各資料集的影像數量如下表所示。
 
@@ -32,6 +30,7 @@
 
 ## 模型架構: Attention U-net
 本專案使用[Attention U-net](<https://arxiv.org/abs/1804.03999> "Title")實作腦瘤分割模型。該模型改良自傳統 U-Net 架構，引入了 Attention Gate 模組，有效聚焦於與目標相關的特徵區域。
+
 Attention U-net架構包含：
 - Encoder（Downsampling）：多層卷積與池化擷取特徵。
 - Decoder（Upsampling）：反卷積與跳躍連接(skip connection)重建影像。
