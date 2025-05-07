@@ -19,12 +19,13 @@ This project implements the **Attention U-Net** architecture to perform brain tu
 - The folders in data/lgg-mri-segmentation are named based on the medical institution and ID of each patient.
 - This project splits the dataset into three subsets: training, validation, and testing. The number of images in each subset is as show in the folloing table:
 
-
 <div align="center">
 
-Training&nbsp;&nbsp;&nbsp; | Validation | Testing
+Training | Validation | Testing
 :------: | :------: | :------: 
    3329   |     247    |   353
+
+</div>
 
 ---
 
@@ -45,9 +46,11 @@ An illustrative diagram of the model architecture and parameter settings is show
 The trained model was evaluated on the test dataset using Dice score, Precision, and Recall as metrics. The average values are shown in the table below:
 
 <div align="center">
-| Dice Score | Precision | Recall |
-| :------: | :------: | :------: |
-|   0.7629   |   0.8789  | 0.8345 |
+
+ Dice Score | Precision | Recall 
+ :------: | :------: | :------: 
+   0.7629   |   0.8789  | 0.8345 
+
 </div>
 
 
