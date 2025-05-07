@@ -14,15 +14,16 @@ This project implements the **Attention U-Net** architecture to perform brain tu
 
 ## Dataset
 
-- The dataset is sourced from the [Brain MRI segmentation資料集](<https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation> "Title") by Mateusz Budan on Kaggle.
+- The dataset is sourced from the [Brain MRI segmentation dataset](<https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation> "Title") by Mateusz Budan on Kaggle.
 - The dataset includes brain images and tumor segmentation masks from 110 glioma patients, collected by The Cancer Genome Atlas (TCGA). The brain images were taken using the FLAIR sequence at various horizontal slice positions and manually annotated by professionals to indicate tumor regions. There are total 3,929 image-mask pairs in .tif format.
 - The folders in data/lgg-mri-segmentation are named based on the medical institution and ID of each patient.
 - This project splits the dataset into three subsets: training, validation, and testing. The number of images in each subset is as show in the folloing table:
 
+<div align="center">
 | Training | Validation | Testing |
 | :------: | :------: | :------: |
 |   3329   |     247    |   353   |
-
+</div>
 ---
 
 ## Model Architecture: Attention U-net
@@ -40,9 +41,13 @@ An illustrative diagram of the model architecture and parameter settings is show
 
 ## Results
 The trained model was evaluated on the test dataset using Dice score, Precision, and Recall as metrics. The average values are shown in the table below:
+
+<div align="center">
 | Dice Score | Precision | Recall |
 | :------: | :------: | :------: |
 |   0.7629   |   0.8789  | 0.8345 |
+</div>
+
 
 The evaluation results of the model are not ideal. By observing the predicted segmentation results, several issues that often lead to misjudgment were identified. 
 
