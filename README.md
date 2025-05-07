@@ -1,59 +1,62 @@
 # Brain Tumor Segmentation with Attention U-Net
 
-本專案使用實現 **Attention U-Net** 架構實作 MRI 影像中的腦瘤分割任務。目的是區分影像中的腫瘤區域，協助醫療影像分析自動化。
+This project implements the **Attention U-Net** architecture to perform brain tumor segmentation in MRI images. The goal is to identify tumor regions in the images and assist in the automation of medical image analysis.
 
 ---
 
-## 專案目標
+## Purpose
 
-- 使用 MRI 影像對腦瘤進行影像分割。
-- 採用 Attention U-Net 模型提升對邊界與小型腫瘤區域的識別能力。
-- 評估模型效能（Dice score指標）。
-
----
-
-## 資料集
-
-- 資料集來源為Mateusz Budan於kaggle所提供的[Brain MRI segmentation資料集](<https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation> "Title")。該資料為The Cancer Genome Atlas (TCGA)所收集的110位膠質瘤患者腦部影像及腫瘤標記遮罩，腦部影像使用FLAIR序列收取水平方向不同切面位置的影像，並由相關專業人員手動標記腫瘤位置，共計3929組影像，影像檔案格式皆為.tif。data/lgg-mri-segmentation中的資料夾分別以患者的醫療單位及ID命名。
-
-|                         MR image                        |                             Mask                             |
-|:--:                                                     |:--:                                                          |
-|![image00](data/train/images/TCGA_DU_5851_19950428_1.tif "MR image")|![image01](data/train/images/TCGA_DU_5851_19950428_1_mask.tif "Mask")|
-
-- 本專案將該資料集劃分為三個部分，分別是訓練資料集、驗證資料集以及測試資料集，各資料集的影像數量如下表所示。
-
-| Training    | Validation  | Testing       |
-|     :---:   |    :----:   |      :---:    |
-| 3329        | 247         | 353           |
+- Perform image segmentation on brain tumors using MR images.
+- Adopt the Attention U-Net model to enhance the ability to identify boundaries and small tumor regions.
+- Evaluate model performance using the Dice score metric.
 
 ---
 
-## 模型架構: Attention U-net
-本專案使用[Attention U-net](<https://arxiv.org/abs/1804.03999> "Title")實作腦瘤分割模型。該模型改良自傳統 U-Net 架構，引入了 Attention Gate 模組，有效聚焦於與目標相關的特徵區域。
+## Dataset
 
-Attention U-net架構包含：
-- Encoder（Downsampling）：多層卷積與池化擷取特徵。
-- Decoder（Upsampling）：反卷積與跳躍連接(skip connection)重建影像。
-- Attention Gate：於跳躍連接時選擇性地傳遞重要特徵。
+- The dataset is sourced from the [Brain MRI segmentation資料集](<https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation> "Title") by Mateusz Budan on Kaggle.
+- The dataset includes brain images and tumor segmentation masks from 110 glioma patients, collected by The Cancer Genome Atlas (TCGA). The brain images were taken using the FLAIR sequence at various horizontal slice positions and manually annotated by professionals to indicate tumor regions. There are total 3,929 image-mask pairs in .tif format.
+- The folders in data/lgg-mri-segmentation are named based on the medical institution and ID of each patient.
+- This project splits the dataset into three subsets: training, validation, and testing. The number of images in each subset is as show in the folloing table:
 
-其模型的架構與參數設定示意圖如下:
+| Training | Validation | Testing |
+| :------: | :------: | :------: |
+|   3329   |     247    |   353   |
+
+---
+
+## Model Architecture: Attention U-net
+This project uses the [Attention U-net](<https://arxiv.org/abs/1804.03999> "Title") for brain tumor segmentation. This model improves upon the traditional U-Net by introducing Attention Gate modules, which effectively focus on relevant feature regions.
+
+The Attention U-Net architecture includes：
+- Encoder (Downsampling): Multiple layers of convolution and pooling to extract features.
+- Decoder (Upsampling): Transposed convolutions and skip connections to reconstruct the image.
+- Attention Gates: Selectively pass important features during skip connections.
+
+An illustrative diagram of the model architecture and parameter settings is shown below:
 ![image1](/models/model_structure.jpg "model structure")
 
 ---
 
-## 專案成果
-訓練完的模型透過測試資料集評估模型的結果，計算Dice score、Precision和Recall的平均值做為評估模型的指標，其數值分別如下表。
-| Dice Score  | Precision   | Recall        |
-|     :---:   |    :----:   |      :---:    |
-| 0.7629      | 0.8789      | 0.8345        |
+## Results
+The trained model was evaluated on the test dataset using Dice score, Precision, and Recall as metrics. The average values are shown in the table below:
+| Dice Score | Precision | Recall |
+| :------: | :------: | :------: |
+|   0.7629   |   0.8789  | 0.8345 |
 
-模型的評估結果並不理想，實際觀察模型預測分割的結果後，歸類出容易產生誤判的幾個問題。下列以實際的案例進行說明。圖中左側為原始影像，中間為手動圈選的腫瘤標記遮罩。右側則為預測結果與手動圈選標記的疊圖，其中灰色區域為手動圈選標記，黃色區域為模型預測結果。
-- 發現模型對於腫瘤中信號較強的區域能夠準確辨別，但較難辨別腫瘤邊界影像信號強度較弱的區域。
+The evaluation results of the model are not ideal. By observing the predicted segmentation results, several issues that often lead to misjudgment were identified. 
+
+These are explained below with real examples. In the images: the left side is the original MRI, the middle is the manually annotated tumor mask, and the right is the overlay of the model's prediction and the manual annotation. In the overlay image, Gray areas represent manual annotations, while yellow areas are the model's predictions.
+
+- The model accurately identifies regions with strong signals in the region of tumor, but struggles with tumor boundaries where signals are weaker.
 ![image2](/results/overlay/TCGA_CS_5395_19981004_11_overlay.jpg "prediction example1")
-- 模型容易將影像信號強度較強的非腫瘤區域誤判為腫瘤。
+- The model tends to misidentify non-tumor regions with strong signals as tumors.
 ![image3](/results/overlay/TCGA_CS_4943_20000902_13_overlay.jpg "prediction example2")
 
+---
 
-
-
+## Referneces
+1. https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation
+2. Oktay, O., Schlemper, J., Folgoc, L.L., Lee, M.J., Heinrich, M.P., Misawa, K., Mori, K., McDonagh, S.G., Hammerla, N.Y., Kainz, B., Glocker, B., & Rueckert, D. (2018). Attention U-Net: Learning Where to Look for the Pancreas. ArXiv, abs/1804.03999.
+3. Franco-Barranco, Daniel & Muñoz-Barrutia, Arrate & Arganda-Carreras, Ignacio. (2021). Stable Deep Neural Network Architectures for Mitochondria Segmentation on Electron Microscopy Volumes. Neuroinformatics. 20. 10.1007/s12021-021-09556-1. 
 
