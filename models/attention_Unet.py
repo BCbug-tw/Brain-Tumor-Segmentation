@@ -31,16 +31,19 @@ class AttentionBlock(nn.Module):
 
 
 class ConvBlock(nn.Module):
-    def __init__(self, in_ch, out_ch):
+    def __init__(self, in_ch, out_ch, dropout=False):
         super(ConvBlock, self).__init__()
-        self.conv = nn.Sequential(
+        layers = [
             nn.Conv2d(in_ch, out_ch, kernel_size=3, padding=1),
             nn.BatchNorm2d(out_ch),
             nn.ReLU(inplace=True),
             nn.Conv2d(out_ch, out_ch, kernel_size=3, padding=1),
             nn.BatchNorm2d(out_ch),
             nn.ReLU(inplace=True),
-        )
+        ]
+        if dropout:
+            layers.append(nn.Dropout(0.3))
+        self.conv = nn.Sequential(*layers)
 
     def forward(self, x):
         return self.conv(x)

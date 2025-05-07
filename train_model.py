@@ -14,9 +14,9 @@ def train_model():
     val_dataset = TumorDataset(data_dir="data/val")
     test_dataset = TumorDataset(data_dir="data/test")
 
-    train_loader = DataLoader(train_dataset, batch_size=4, shuffle=True)
-    val_loader = DataLoader(val_dataset, batch_size=4, shuffle=False)
-    test_loader = DataLoader(test_dataset, batch_size=4, shuffle=False)
+    train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=16, shuffle=False)
+    test_loader = DataLoader(test_dataset, batch_size=16, shuffle=False)
 
     model = AttentionUNet(in_ch=1, out_ch=1).to(device)
     criterion = nn.BCEWithLogitsLoss()
