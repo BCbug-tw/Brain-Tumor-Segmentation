@@ -15,6 +15,7 @@
 ## 資料集
 
 - 資料集來源為Mateusz Budan於kaggle所提供的[Brain MRI segmentation資料集](<https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation> "Title")。該資料為The Cancer Genome Atlas (TCGA)所收集的110位膠質瘤患者腦部影像及腫瘤標記遮罩，腦部影像使用FLAIR序列收取水平方向不同切面位置的影像，並由相關專業人員手動標記腫瘤位置，共計3929組影像，影像檔案格式皆為.tif。data/lgg-mri-segmentation中的資料夾分別以患者的醫療單位及ID命名。
+
 |                         MR image                        |                             Mask                             |
 |:--:|:--:|
 |<img src="data/train/images/TCGA_DU_5851_19950428_1.tif">|<img src="data/train/images/TCGA_DU_5851_19950428_1_mask.tif">|
@@ -22,6 +23,7 @@
 
 
 - 本專案將該資料集劃分為三個部分，分別是訓練資料集、驗證資料集以及測試資料集，各資料集的影像數量如下表所示。
+
 | Training    | Validation  | Testing       |
 |     :---:   |    :----:   |      :---:    |
 | 3329        | 247         | 353           |
@@ -36,7 +38,7 @@ Attention U-net架構包含：
 - Attention Gate：於跳躍連接時選擇性地傳遞重要特徵。
 
 其模型的架構與參數設定示意圖如下:
-![image1](/models/model structure.jpg "model structure")
+![image1](/models/model_structure.jpg "model structure")
 
 ---
 
