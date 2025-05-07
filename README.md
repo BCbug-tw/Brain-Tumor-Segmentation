@@ -68,7 +68,7 @@ These are explained below with real examples. In the images: the left side is th
 
 ---
 
-## Referneces
+## References
 1. https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation
 2. Oktay, O., Schlemper, J., Folgoc, L.L., Lee, M.J., Heinrich, M.P., Misawa, K., Mori, K., McDonagh, S.G., Hammerla, N.Y., Kainz, B., Glocker, B., & Rueckert, D. (2018). Attention U-Net: Learning Where to Look for the Pancreas. ArXiv, abs/1804.03999.
 3. Franco-Barranco, Daniel & Muñoz-Barrutia, Arrate & Arganda-Carreras, Ignacio. (2021). Stable Deep Neural Network Architectures for Mitochondria Segmentation on Electron Microscopy Volumes. Neuroinformatics. 20. 10.1007/s12021-021-09556-1. 
