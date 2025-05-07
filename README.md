@@ -1,6 +1,6 @@
 # Brain Tumor Segmentation with Attention U-Net
 
-本專案使用 **Attention U-Net** 架構實作 MRI 影像中的腦瘤分割任務。目的是區分影像中的腫瘤區域，協助醫療影像分析自動化。本專案使用 PyTorch 框架。
+本專案使用實現 **Attention U-Net** 架構實作 MRI 影像中的腦瘤分割任務。目的是區分影像中的腫瘤區域，協助醫療影像分析自動化。
 
 ---
 
