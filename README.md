@@ -63,7 +63,7 @@ These are explained below with real examples. In the images: the left side is th
 ![image3](/results/overlay/TCGA_CS_5395_19981004_13_overlay.jpg "prediction example2")
 
 - The model tends to misidentify non-tumor regions with strong signals as tumors.
-![image4](/results/overlay/TCGA_CS_5395_19990606_13_overlay.jpg "prediction example3")
+![image4](/results/overlay/TCGA_CS_5393_19990606_13_overlay.jpg "prediction example3")
 ![image5](/results/overlay/TCGA_CS_6665_20010817_14_overlay.jpg "prediction example4")
 
 ---
